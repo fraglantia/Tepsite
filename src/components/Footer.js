@@ -3,8 +3,8 @@ import React from 'react';
 class Footer extends React.Component {
   render() {
       return(
-          <div>
-              <h1>Footer</h1>
+          <div class='footer'>
+              <p>sbig, 2019</p>
           </div>
       )
   }

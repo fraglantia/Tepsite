@@ -1,10 +1,16 @@
 import React from 'react';
+import Project from './Project'
 
 class Body extends React.Component {
   render() {
       return(
-          <div>
-              <h1>didibodi dibodibodi</h1>
+          <div className = 'projectContainer'>
+              <Project />
+              <Project />
+              <Project />
+              <Project />
+              <Project />
+              <Project />
           </div>
       )
   }
