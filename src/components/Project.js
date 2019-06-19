@@ -13,20 +13,24 @@ class Project extends React.Component {
 
     render() {
         return(
-            <div className = 'projectDiv'>
-                    <img
-                        src = {this.props.img}
-                        alt = 'placeholder'
-                        className = 'projectImg'
-                    />
+            <div className='projectDiv'>
+                <a href={this.props.link}>
+                    <div>
+                        <img
+                            src = {this.props.img}
+                            alt = 'placeholder'
+                            className = 'projectImg'
+                        />
 
-                    <div className='projectTitle'>
-                        <p>{this.props.title}</p>
+                        <div className='projectTitle'>
+                            <p>{this.props.title}</p>
+                        </div>
+                    
+                        <div className='projectDesc'>
+                            {this.padDesc(this.props.desc)}
+                        </div>
                     </div>
-                
-                    <div className='projectDesc'>
-                        {this.padDesc(this.props.desc)}
-                    </div>
+                </a>
             </div>
         )
     }

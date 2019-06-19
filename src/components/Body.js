@@ -10,6 +10,7 @@ class Body extends React.Component {
         const placeholder_projects = []
 
         const placeholder_item = {
+            link: '#',
             img: placeholder_img,
             title: 'Project Name',
             desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' 
@@ -40,7 +41,7 @@ class Body extends React.Component {
             <div className = 'projectContainer'>
                 {
                     this.state.projects.map(
-                            (project, idx) => <Project img={project.img} title={project.title} desc={project.desc} key={idx} /> 
+                            (project, idx) => <Project link={project.link} img={project.img} title={project.title} desc={project.desc} key={idx} /> 
                         )
                 }
             </div>
