@@ -1,26 +1,35 @@
 import React from 'react';
-import placeholder from './Images/placeholder.jpg'
 
 class Project extends React.Component {
-  render() {
-      return(
-          <div className = 'projectDiv'>
-                <img
-                    src = {placeholder}
-                    alt = 'placeholder'
-                    className = 'projectImg'
-                />
+    
+    padDesc(desc){
+        if (desc.length > 100) {
+            return desc.slice(0, 100) + '...'
+        }
+        else {
+            return desc
+        }
+    }
 
-                <div className='projectTitle'>
-                    <p>Project Name</p>
-                </div>
-              
-                <div className='projectDesc'>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et...
-                </div>
-          </div>
-      )
-  }
+    render() {
+        return(
+            <div className = 'projectDiv'>
+                    <img
+                        src = {this.props.img}
+                        alt = 'placeholder'
+                        className = 'projectImg'
+                    />
+
+                    <div className='projectTitle'>
+                        <p>{this.props.title}</p>
+                    </div>
+                
+                    <div className='projectDesc'>
+                        {this.padDesc(this.props.desc)}
+                    </div>
+            </div>
+        )
+    }
 }
 
 export default Project;

@@ -12,7 +12,7 @@
     flex-direction: column;
     align-items: center;
     margin-bottom: 20px;
-    width: 85%;
+    width: 90%;
 }
 
 .header-title {
@@ -39,7 +39,9 @@
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    width: 85%;
+    justify-content: center;
+    width: 90%;
+    margin: auto;
     /* background-color: blue; */
 }
 
@@ -78,6 +80,7 @@
     height: 40px;
     overflow: hidden;
     text-align: center;
+    word-wrap: break-word;
     /* background-color: red; */
 }
 
