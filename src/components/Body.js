@@ -1,6 +1,7 @@
 import React from 'react';
 import Project from './Project'
-import placeholder_img from './Images/placeholder.jpg'
+import placeholder_img from './Datas/Images/placeholder.jpg'
+import projects from './Datas/projects'
 
 class Body extends React.Component {
 
@@ -25,15 +26,9 @@ class Body extends React.Component {
         }
     }
 
-    // componentDidMount() {
-    //     const url = '<sample_url>'
-    //     fetch(url)
-    //             .then(response => response.json())
-    //             .then(response => {
-    //                 this.setState({projects: response})
-    //                 }
-    //             )
-    //   }
+    componentDidMount() {
+        this.setState({projects: projects})
+      }
     
 
     render() {

@@ -1,11 +1,12 @@
 import React from 'react';
+import headerTxt from './Datas/headerTxt';
 
 class Header extends React.Component {
   render() {
       return(
           <div className='header'>
-              <div className='header-title'>sitename.com</div>
-              <div className='header-desc'>this website holds the collection of user's projects!</div>
+              <div className='header-title'>{headerTxt.title}</div>
+              <div className='header-desc'>{headerTxt.desc}</div>
           </div>
       )
   }

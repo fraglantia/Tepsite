@@ -1,6 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faInstagram, faFacebook, faTwitter, faGithub } from '@fortawesome/free-brands-svg-icons'
+import links from './Datas/links';
 
 class Footer extends React.Component {
   render() {
@@ -8,25 +9,25 @@ class Footer extends React.Component {
           <div className='footer'>
                 <div className='icons'>
                     <div className='icon'>
-                        <a href='#'>
+                        <a href={links.instagram}>
                             <FontAwesomeIcon icon={faInstagram} size='2x'/>
                         </a>
                     </div>
                     <p>•</p>
                     <div className='icon'>
-                        <a href='#'>
+                        <a href={links.facebook}>
                             <FontAwesomeIcon icon={faFacebook} size='2x'/>
                         </a>
                     </div>
                     <p>•</p>
                     <div className='icon'>
-                        <a href='#'>
+                        <a href={links.twitter}>
                             <FontAwesomeIcon icon={faTwitter} size='2x'/>
                         </a>
                     </div>
                     <p>•</p>
                     <div className='icon'>
-                        <a href='#'>
+                        <a href={links.github}>
                             <FontAwesomeIcon icon={faGithub} size='2x'/>
                         </a>
                     </div>
