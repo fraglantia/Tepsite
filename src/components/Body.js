@@ -1,7 +1,7 @@
 import React from 'react';
 import Project from './Project'
 import placeholder_img from './Datas/Images/placeholder.jpg'
-import projects from './Datas/projects'
+import apiurl from './Datas/apiurl'
 
 class Body extends React.Component {
 
@@ -22,17 +22,26 @@ class Body extends React.Component {
         }
 
         this.state = {
+            loading: true,
             projects: placeholder_projects,
         }
     }
 
     componentDidMount() {
-        this.setState({projects: projects})
+        fetch(apiurl)
+                .then(response => response.json())
+                .then(response => {
+                    this.setState(
+                        {
+                            loading: false,
+                            projects: response
+                        })
+                })
       }
     
 
     render() {
-        return(
+        return( !this.state.loading && 
             <div className = 'projectContainer'>
                 {
                     this.state.projects.map(
