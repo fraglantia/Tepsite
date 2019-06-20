@@ -43,7 +43,6 @@ body {
 
 
 .footer .text {
-    margin-top: 5px;
     font-family: 'EB Garamond', serif;
     font-size: 14px;
     color: lightgray;
@@ -71,6 +70,12 @@ body {
     color: whitesmoke;
     text-decoration: none;
 }
+
+.footer .icons .icon a:hover{
+    color: lightgray;
+    text-decoration: none;
+}
+
 
 .projectContainer {
     display: flex;
