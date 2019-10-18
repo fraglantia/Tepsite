@@ -4,7 +4,8 @@ body {
     background-image: url(./resources/wpp.jpg);
     background-attachment: fixed;
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-position: center;
+    background-size: 5120px 100%;
 }
 
 .App {

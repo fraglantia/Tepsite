@@ -1,5 +1,5 @@
 const headerTxt = {
-    title : 'tepsite.xyz',
+    title : 'stevebezalel.com',
     desc : "this site holds the collection of Steve's self projects!"
 }
 
