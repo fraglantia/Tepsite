@@ -26,13 +26,13 @@ body {
 
 .header-title {
     font-family: 'Oswald', sans-serif;
-    font-size: 64px;
+    font-size: 40px;
     margin-bottom: 5px;
 }
 
 .header-desc {
     font-family: 'EB Garamond', serif;
-    font-size: 20px;
+    font-size: 16px;
 }
 
 .footer {
