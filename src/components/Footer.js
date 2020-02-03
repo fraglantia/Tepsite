@@ -33,7 +33,7 @@ class Footer extends React.Component {
                     </div>
                 </div>
                 <div className='text'>
-                    <p>sbig, 2019</p>
+                    <p>sbig, 2020</p>
                 </div>
           </div>
           

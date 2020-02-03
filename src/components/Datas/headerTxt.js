@@ -1,6 +1,7 @@
 const headerTxt = {
     title : 'stevebezalel.com',
-    desc : "this site holds the collection of Steve's self projects!"
+    desc : "This site holds the collection of Steve Bezalel's self projects!",
+    img : "./resources/psd.png"
 }
 
 export default headerTxt
