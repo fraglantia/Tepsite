@@ -1,7 +1,9 @@
 import React from 'react';
+import axios from 'axios'
 import Project from './Project'
-import placeholder_img from './Datas/Images/placeholder.jpg'
-import apiurl from './Datas/apiurl'
+import placeholder_img from '../Datas/Images/placeholder.jpg'
+import apiurl from '../Datas/apiurl'
+
 
 class Body extends React.Component {
 
@@ -28,15 +30,14 @@ class Body extends React.Component {
     }
 
     componentDidMount() {
-        fetch(apiurl)
-                .then(response => response.json())
-                .then(response => {
-                    this.setState(
-                        {
-                            loading: false,
-                            projects: response
-                        })
-                })
+        axios.get(apiurl)
+            .then(response => {
+                this.setState(
+                    {
+                        loading: false,
+                        projects: response.data
+                    })
+            })
       }
     
 
