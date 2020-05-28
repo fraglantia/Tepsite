@@ -1,14 +1,14 @@
 import React from 'react';
 import Header from './Common/Header';
 import Footer from './Common/Footer';
-import Body from './AdminPage/Body';
+import Body from './DeployPage/Body';
 
 
-class AdminLogin extends React.Component {
+class DeployPage extends React.Component {
   render() {
       return(
         <div className='App'>
-            <Header desc="Admin Page"/>
+            <Header desc="Add a Project"/>
             <Body />
             <Footer />
       </div>
@@ -16,4 +16,4 @@ class AdminLogin extends React.Component {
   }
 }
 
-export default AdminLogin;
+export default DeployPage;

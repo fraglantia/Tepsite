@@ -2,7 +2,7 @@ import React from 'react';
 import PrivateRoute from './components/Utility/PrivateRoute'
 import Homepage from './components/Homepage';
 import AdminLogin from './components/AdminLogin'
-import AdminPage from './components/AdminPage'
+import DeployPage from './components/DeployPage'
 import NotFoundPage from './components/NotFoundPage';
 
 import {
@@ -17,7 +17,7 @@ function App() {
       <Switch>
         <Route path="/" exact component={Homepage}/>
         <Route path="/adminlogin" exact component={AdminLogin}/>
-        <PrivateRoute path="/admin" exact component={AdminPage}/>
+        <PrivateRoute path="/deploy" exact component={DeployPage}/>
         <Route component={NotFoundPage}/>
       </Switch>
     </Router>

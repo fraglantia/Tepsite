@@ -192,7 +192,7 @@ body {
     height: 80px;
 }
 
-input[type=password] {
+.admin-form > input[type=password] {
     font-size: 24px;
     border: none;
     text-align: center;
@@ -200,7 +200,7 @@ input[type=password] {
     border-bottom: 1.5px solid #222;
 }
 
-input[type=submit] {
+.admin-form > input[type=submit] {
     font-size: 24px;
     transition-duration: 0.4s;
     background-color: transparent;
@@ -232,3 +232,43 @@ input[type=submit] {
     font-weight: 100;
 }
 
+.error-container {
+    text-align: center;
+}
+
+.deploy-form {
+    font-size: 14px;
+    font-family: 'EB Garamond', serif;
+}
+
+.deploy-form label{
+	display: block;
+    margin: 0px 0px 15px 0px;
+    width: 300px;
+}
+.deploy-form label > span{
+	width: 25%;
+	font-weight: bold;
+	float: left;
+	padding-top: 8px;
+	padding-right: 5px;
+}
+
+.deploy-form label > .input-field{
+    width: 70%;
+    font-size: 14px;
+    font-family: 'EB Garamond', serif;
+    background-color: #efefef;
+    border: 1px solid #222;
+    border-radius: 2px;
+}
+
+.deploy-form label > .input-field-2{
+    width: 70%;
+    font-size: 14px;
+    font-family: 'EB Garamond', serif;
+}
+
+.deploy-form label > textarea{
+    resize: none;
+}
