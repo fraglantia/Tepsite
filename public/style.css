@@ -272,3 +272,42 @@ body {
 .deploy-form label > textarea{
     resize: none;
 }
+
+.deployment-table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 14px;
+    font-family: 'EB Garamond', serif;
+}
+
+.deployment-table th, td {
+    text-align: left;
+    padding: 8px;
+    border: 1px solid #ddd;
+}
+  
+.deployment-table tr:nth-child(even){
+    background-color: #fff;
+}
+
+.deployment-table th {
+    background-color: #333;
+    color: white;
+}
+
+.deployment {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.deployment button {
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 16px;
+    font-family: 'EB Garamond', serif;
+    background-color: rgba(0,0,0,0.1);;
+    border: 1px solid #222;
+    border-radius: 2px;
+}
