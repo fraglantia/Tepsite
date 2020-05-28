@@ -10,6 +10,8 @@ class Body extends React.Component {
             loading: true,
             projects: null,
         }
+
+        this.handleClick = this.handleClick.bind(this)
     }
 
     componentDidMount() {
@@ -41,24 +43,32 @@ class Body extends React.Component {
         
       }
 
+    handleClick(){
+        this.props.history.push('/deploy')
+    }
+
     render() {
         return(
             !this.state.loading && 
             <div className='deployment'>
                 <table className = 'deployment-table'>
-                    <tr>
-                        <th>Port</th>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>Actions</th>
-                    </tr>
+                    <thead>
+                        <tr>
+                            <th>Port</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
                     {
                         this.state.projects.map(
                                 (project, idx) => <DeployedProject name={project.name} port={project.port} desc={project.desc} key={idx} /> 
                             )
                     }
+                    </tbody>
                 </table>
-                <button>Add New Project</button>
+                <button onClick={this.handleClick}>Deploy a  New Project >></button>
             </div>
         )
     }

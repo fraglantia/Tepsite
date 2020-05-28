@@ -34,7 +34,6 @@ class PrivateRoute extends React.Component {
 
     render() {
         const {component: Component, ...rest} = this.props;
-        console.log(this.state.auth)
         return (
             <Route {...rest} render={props => (
                 this.state.authDone ?
