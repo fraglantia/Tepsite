@@ -20,7 +20,7 @@ class DeployedProject extends React.Component {
           <td>{this.props.name}</td>
           <td>{this.padDesc(this.props.desc)}</td>
           <td>
-            <a href="/edit">
+            <a href={"/edit/"+this.props.id}>
               <FontAwesomeIcon icon={faEdit} size="lg"/>
             </a>
             <a href="/download">
