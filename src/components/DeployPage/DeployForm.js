@@ -84,7 +84,10 @@ class DeployForm extends React.Component {
 
                 <label>
                   <span>File:</span>
-                  <input type="file" className="input-field-2" name="projectFile" onChange={this.handleProjFileChange} />
+                  <div class="upload-btn-wrapper">
+                    <button class="btn">Upload a file</button>
+                    <input type="file" className="input-field-file" name="projectFile" onChange={this.handleProjFileChange} />
+                  </div>
                 </label>
 
                 <label><span> </span><input type="submit" value="Deploy" /></label>

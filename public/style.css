@@ -261,12 +261,66 @@ body {
     background-color: #efefef;
     border: 1px solid #222;
     border-radius: 2px;
+    transition: background-color 0.15s ease;
+    margin-top: 5px;
 }
 
-.deploy-form label > .input-field-2{
+.deploy-form label > .input-field:focus{
+    background-color: #dfdfdf;
+}
+
+
+.upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.upload-btn-wrapper .btn {
+    border: 1px solid #222;
+    background-color: #efefef;
+    padding: 0px 10px;
+    border-radius: 2px;
+    font-size: 14px;
+    font-family: 'EB Garamond', serif;
+    transition: background-color 0.15s ease;
+    margin-top: 5px;
+}
+
+.upload-btn-wrapper .btn:hover {
+    background-color: #dfdfdf;
+}
+
+.upload-btn-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+
+.deploy-form label input[type=submit]{
+    font-size: 14px;
+    font-family: 'EB Garamond', serif;
+    padding: 0px 10px;
+    background-color: #efefef;
+    border: 1px solid #222;
+    border-radius: 2px;
+    transition: background-color 0.15s ease;
+}
+
+.deploy-form label input[type=submit]:hover{
+    background-color: #dfdfdf;
+}
+
+.deploy-form label > .input-field{
     width: 70%;
     font-size: 14px;
     font-family: 'EB Garamond', serif;
+    background-color: #efefef;
+    border: 1px solid #222;
+    border-radius: 2px;
+    transition: background-color 0.15s ease;
 }
 
 .deploy-form label > textarea{
@@ -284,6 +338,10 @@ body {
     text-align: left;
     padding: 8px;
     border: 1px solid #ddd;
+}
+
+.deployment-table th {
+    text-align: center;
 }
   
 .deployment-table tr:nth-child(even){
@@ -310,4 +368,21 @@ body {
     background-color: rgba(0,0,0,0.1);;
     border: 1px solid #222;
     border-radius: 2px;
+    transition: background-color 0.15s ease;
+}
+
+.deployment button:hover {
+    cursor: pointer;
+    background-color: rgba(0,0,0,0.2);;
+}
+
+.deployment-table td a{
+    color: #333;
+    padding-left: 5px;
+    text-decoration: none;
+    transition: color 0.15s ease;
+}
+
+.deployment-table td a:hover{
+    color: #555;
 }

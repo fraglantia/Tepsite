@@ -1,4 +1,6 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrashAlt, faEdit, faDownload } from '@fortawesome/free-solid-svg-icons'
 
 class DeployedProject extends React.Component {
     
@@ -17,7 +19,17 @@ class DeployedProject extends React.Component {
           <td>{this.props.port}</td>
           <td>{this.props.name}</td>
           <td>{this.padDesc(this.props.desc)}</td>
-          <td>X E D</td>
+          <td>
+            <a href="/edit">
+              <FontAwesomeIcon icon={faEdit} size="lg"/>
+            </a>
+            <a href="/download">
+              <FontAwesomeIcon icon={faDownload} size="lg"/>
+            </a>
+            <a href="/delete">
+              <FontAwesomeIcon icon={faTrashAlt} size="lg"/>
+            </a>
+          </td>
         </tr>
       )
   }
