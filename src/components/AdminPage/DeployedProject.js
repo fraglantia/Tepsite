@@ -3,7 +3,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt, faEdit, faDownload } from '@fortawesome/free-solid-svg-icons'
 
 class DeployedProject extends React.Component {
-    
+  
+  constructor() {
+      super()
+      this.handleDownload = this.handleDownload.bind(this)
+      this.handleDelete = this.handleDelete.bind(this)
+  }
+
   padDesc(desc){
       if (desc.length > 100) {
           return desc.slice(0, 50) + '...'
@@ -11,6 +17,16 @@ class DeployedProject extends React.Component {
       else {
           return desc
       }
+  }
+
+  handleDownload(event){
+    event.preventDefault();
+    // alert('downloaded '+this.props.id)
+  }
+
+  handleDelete(event){
+    event.preventDefault();
+    // alert('deleted '+this.props.id)
   }
 
   render() {
@@ -21,14 +37,16 @@ class DeployedProject extends React.Component {
           <td>{this.padDesc(this.props.desc)}</td>
           <td>
             <a href={"/edit/"+this.props.id}>
-              <FontAwesomeIcon icon={faEdit} size="lg"/>
+              <span>
+                <FontAwesomeIcon icon={faEdit} size="lg"/>
+              </span>
             </a>
-            <a href="/download">
+            <span onClick={this.handleDownload}>
               <FontAwesomeIcon icon={faDownload} size="lg"/>
-            </a>
-            <a href="/delete">
+            </span>
+            <span  onClick={this.handleDelete}>
               <FontAwesomeIcon icon={faTrashAlt} size="lg"/>
-            </a>
+            </span>
           </td>
         </tr>
       )

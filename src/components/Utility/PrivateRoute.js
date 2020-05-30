@@ -37,7 +37,11 @@ class PrivateRoute extends React.Component {
         return (
             <Route {...rest} render={props => (
                 this.state.authDone ?
-                this.state.auth ? <Component {...props} /> : <Redirect to="/adminlogin" />
+                this.state.auth ? <Component {...props} /> : 
+                <Redirect to={{
+                    pathname: '/adminlogin',
+                    state: { from: props.location }
+                }} />
                 : <div className="loading-message">Authenticating...</div>
             )} />
         );

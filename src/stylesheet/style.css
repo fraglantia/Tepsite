@@ -376,13 +376,15 @@ body {
     background-color: rgba(0,0,0,0.2);;
 }
 
-.deployment-table td a{
+
+.deployment-table td span{
+    text-decoration: none;
     color: #333;
     padding-left: 5px;
-    text-decoration: none;
     transition: color 0.15s ease;
 }
 
-.deployment-table td a:hover{
+.deployment-table td span:hover{
+    cursor: pointer;
     color: #555;
 }

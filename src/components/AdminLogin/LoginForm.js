@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 import qs from 'qs';
-import { Redirect } from 'react-router-dom';
 
 class LoginForm extends React.Component {
     constructor(props) {
@@ -9,7 +8,6 @@ class LoginForm extends React.Component {
       this.state = {
         passcode: '',
         errorMsg: '',
-        redirect: false,
       };
   
       this.handleChange = this.handleChange.bind(this);
@@ -35,10 +33,7 @@ class LoginForm extends React.Component {
         withCredentials: true
       })
       .then((response) => {
-        this.setState({
-          errorMsg: '',
-          redirect: true,
-        })
+        this.props.redirectAction()
       })
       .catch((error) => {
         if(error.response.status === 401){
@@ -47,7 +42,6 @@ class LoginForm extends React.Component {
           this.setState({errorMsg: "Internal Server Error"})
         }
       });
-      
     }
   
     render() {
@@ -60,7 +54,6 @@ class LoginForm extends React.Component {
             {this.state.errorMsg !== '' && 
               <div className="error-message">{this.state.errorMsg}</div>
             }
-            {this.state.redirect && <Redirect to='/admin' />}
         </div>
       );
     }

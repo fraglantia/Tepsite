@@ -7,7 +7,7 @@ class Body extends React.Component {
         return(
             <div className="login-body">
                 <p>Enter your passcode:</p>
-                <LoginForm />
+                <LoginForm redirectAction={this.props.redirectAction}/>
             </div>
         )
     }
