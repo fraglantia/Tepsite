@@ -1,6 +1,8 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt, faEdit, faDownload } from '@fortawesome/free-solid-svg-icons'
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
 
 class DeployedProject extends React.Component {
   
@@ -8,6 +10,7 @@ class DeployedProject extends React.Component {
       super()
       this.handleDownload = this.handleDownload.bind(this)
       this.handleDelete = this.handleDelete.bind(this)
+      this.handleConfirmedDelete = this.handleConfirmedDelete.bind(this)
   }
 
   padDesc(desc){
@@ -27,6 +30,23 @@ class DeployedProject extends React.Component {
   handleDelete(event){
     event.preventDefault();
     // alert('deleted '+this.props.id)
+    confirmAlert({
+      title: 'Confirm to Delete',
+      message: `Are you sure you want to delete ${this.props.name}?`,
+      buttons: [
+        {
+          label: 'Yes',
+          onClick: () => this.handleConfirmedDelete()
+        },
+        {
+          label: 'No',
+        }
+      ]
+    });
+  }
+
+  handleConfirmedDelete() {
+    alert(`deleting id=${this.props.id}`)
   }
 
   render() {

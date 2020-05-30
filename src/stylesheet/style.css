@@ -386,5 +386,43 @@ body {
 
 .deployment-table td span:hover{
     cursor: pointer;
-    color: #555;
+    color: #777;
 }
+
+.react-confirm-alert-button-group > button {
+    font-family: 'EB Garamond', serif;
+    background: #333;
+    padding: 4px 15px;
+    color: #eee;
+    margin-right: 15px;
+    border-radius: 2px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+}
+
+.react-confirm-alert-button-group > button:hover {
+    background: #555;
+}
+
+.react-confirm-alert-body {
+    font-family: 'EB Garamond', serif;
+    width: 400px;
+    padding: 30px;
+    border-radius: 2px;
+    color: black;
+}
+
+.react-confirm-alert-body > h1 {
+    font-size: 24px;
+}
+
+.react-confirm-alert-overlay {
+    top: -200px;
+    background: rgba(0, 0, 0, 0.2);
+    -webkit-animation: react-confirm-alert-fadeIn 0.05s 0.05s forwards;
+    -moz-animation: react-confirm-alert-fadeIn 0.05s 0.05s forwards;
+    -o-animation: react-confirm-alert-fadeIn 0.05s 0.05s forwards;
+    animation: react-confirm-alert-fadeIn 0.05s 0.05s forwards;
+  }
+  
