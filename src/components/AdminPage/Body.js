@@ -18,27 +18,30 @@ class Body extends React.Component {
     }
 
     componentDidMount() {
-        const apiurl = baseAPI + "/api/adminProjects"
-        axios.get(apiurl)
-            .then(response => {
-                const projects = []
-                if(response.data){
-                    for (const el of response.data) {
-                        projects.push({
-                            id: el["ID"],
-                            name: el["Name"],
-                            desc: el["Desc"],
-                            port: el["Port"],
-                            visible: el["Visibility"],
-                        })
-                    }
-                }
-                this.setState(
-                    {
-                        loading: false,
-                        projects: projects
+        axios({
+            method: 'GET',
+            url: baseAPI + "/api/adminProjects",
+            withCredentials: true
+          })
+        .then(response => {
+            const projects = []
+            if(response.data){
+                for (const el of response.data) {
+                    projects.push({
+                        id: el["ID"],
+                        name: el["Name"],
+                        desc: el["Desc"],
+                        port: el["Port"],
+                        visible: el["Visibility"],
                     })
-            })        
+                }
+            }
+            this.setState(
+                {
+                    loading: false,
+                    projects: projects
+                })
+        })        
       }
 
     handleClick(){
