@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios'
 import Project from '../Common/Project'
+import baseAPI from '../../Datas/apiurl'
 
 class Body extends React.Component {
 
@@ -14,7 +15,7 @@ class Body extends React.Component {
     }
 
     componentDidMount() {
-        const apiurl = "/api/projects"
+        const apiurl = baseAPI + "/api/projects"
         axios.get(apiurl)
             .then(response => {
                 const projects = []
@@ -22,7 +23,7 @@ class Body extends React.Component {
                     for (const el of response.data) {
                         projects.push({
                             link: el["Port"],
-                            img: "/api/" + el["Img"],
+                            img: baseAPI + "/api/" + el["Img"],
                             title: el["Name"],
                             desc: el["Desc"],
                         })
