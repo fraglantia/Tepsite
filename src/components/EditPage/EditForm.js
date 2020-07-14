@@ -79,7 +79,6 @@ class EditForm extends React.Component {
         method: 'POST',
         url: '/api/editProject/' + this.props.id,
         data: data,
-        withCredentials: true
       })
       .then((response) => {
         this.setState({

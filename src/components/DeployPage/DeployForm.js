@@ -57,7 +57,6 @@ class DeployForm extends React.Component {
         headers: {
           'content-type': 'multipart/form-data'
         },
-        withCredentials: true
       })
       .then((response) => {
         this.setState({
