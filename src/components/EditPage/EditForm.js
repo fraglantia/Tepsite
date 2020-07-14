@@ -77,7 +77,7 @@ class EditForm extends React.Component {
       
       axios({
         method: 'POST',
-        url: '/api/editProject/' + this.props.id,
+        url: baseAPI + '/api/editProject/' + this.props.id,
         data: data,
         withCredentials: true
       })
