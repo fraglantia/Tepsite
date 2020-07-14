@@ -1,0 +1,436 @@
+@import url('https://fonts.googleapis.com/css?family=EB+Garamond|Oswald&display=swap');
+
+body {
+    background-image: url(../resources/wpp.jpg);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 5120px 100%;
+}
+
+.icons p {
+    cursor: default;
+}
+
+.App {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header-out{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 90%;
+}
+
+.header-title {
+    cursor: default;
+    font-family: 'Oswald', sans-serif;
+    font-size: 40px;
+    margin-bottom: 5px;
+}
+
+.header-title > a{
+    color: black;
+    text-decoration: none;
+}
+
+.header-desc {
+    font-family: 'EB Garamond', serif;
+    font-size: 16px;
+}
+
+.footer {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.footer .text {
+    font-family: 'EB Garamond', serif;
+    font-size: 14px;
+    color: lightgray;
+}
+
+.footer .icons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.footer .icons p{
+    color: whitesmoke;
+}
+
+
+.footer .icons .icon{
+    margin-left: 10px;
+    margin-right: 10px;
+    color: whitesmoke;
+    text-decoration: none;
+}
+
+.footer .icons .icon a{
+    color: whitesmoke;
+    text-decoration: none;
+}
+
+.footer .icons .icon a:hover{
+    color: lightgray;
+    text-decoration: none;
+}
+
+
+.projectContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    margin: auto;
+}
+
+.projectDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    flex-basis: 300px;
+    margin: 15px 25px 15px 25px;
+    outline: 1px solid lightgray;
+    outline-offset: -1px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+    transform: scale(1.0);
+    transition: transform 0.1s ease-out;
+}
+
+.projectDiv:hover {
+    transform: scale(1.1);
+}
+
+
+.projectTitle {
+    flex-basis: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 10px 3px 10px;
+    font-size: 18px;
+    font-weight: 700;
+    font-family: 'Oswald', sans-serif;
+    width: 280px;
+    height: 30px;
+}
+
+.projectDesc {
+    flex-basis: auto;
+    font-size: 12px;
+    font-family: 'EB Garamond', serif;
+    font-weight: 100;
+    margin: 0 10px 0 10px;
+    width: 280px;
+    height: 40px;
+    overflow: hidden;
+    text-align: center;
+    word-wrap: break-word;
+}
+
+.projectImg {
+    object-fit: cover;
+    width: 280px;
+    height: 130px;
+    margin: 10px 10px 5px 10px;
+    outline: 1px solid lightgray;
+    outline-offset: -1px;
+}
+
+.title-img {
+    width: 100px;
+    height: 100px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    -webkit-filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.15));
+    filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.15));
+}
+
+.projectDiv a {
+    text-decoration: none;
+    color: black;
+}
+
+.login-body {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 40px;
+    font-size: 24px;
+}
+
+.admin-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+}
+
+.admin-form > input[type=password] {
+    font-size: 24px;
+    border: none;
+    text-align: center;
+    background-color: transparent;
+    border-bottom: 1.5px solid #222;
+}
+
+.admin-form > input[type=submit] {
+    font-size: 24px;
+    transition-duration: 0.4s;
+    background-color: transparent;
+    border: none;
+    color: #222;
+    font-family: 'Oswald', sans-serif;
+}
+
+.error-message {
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    color: red;
+    margin-top: 10px;
+}
+
+.notfound-body{
+    font-family: 'Oswald', sans-serif;
+    text-align: center;
+}
+
+.notfound-body > h1 {
+    margin-top: 20px;
+    margin-bottom: -10px;
+    font-size: 72px;
+}
+
+.notfound-body > h2 {
+    font-size: 36px;
+    font-weight: 100;
+}
+
+.error-container {
+    text-align: center;
+}
+
+.deploy-form {
+    font-size: 14px;
+    font-family: 'EB Garamond', serif;
+}
+
+.deploy-form label{
+	display: block;
+    margin: 0px 0px 15px 0px;
+    width: 300px;
+}
+.deploy-form label > span{
+	width: 25%;
+	font-weight: bold;
+	float: left;
+	padding-top: 8px;
+    padding-right: 5px;
+}
+
+.deploy-form label > .input-field{
+    width: 70%;
+    font-size: 14px;
+    font-family: 'EB Garamond', serif;
+    background-color: #efefef;
+    border: 1px solid #222;
+    border-radius: 2px;
+    transition: background-color 0.15s ease;
+    margin-top: 5px;
+}
+
+.deploy-form label > .input-field:focus{
+    background-color: #dfdfdf;
+}
+
+
+.upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.upload-btn-wrapper .btn {
+    border: 1px solid #222;
+    background-color: #efefef;
+    padding: 0px 10px;
+    border-radius: 2px;
+    font-size: 14px;
+    font-family: 'EB Garamond', serif;
+    transition: background-color 0.15s ease;
+    margin-top: 5px;
+}
+
+.upload-btn-wrapper .btn:hover {
+    background-color: #dfdfdf;
+}
+
+.upload-btn-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+
+.deploy-form label input[type=submit]{
+    font-size: 14px;
+    font-family: 'EB Garamond', serif;
+    padding: 0px 10px;
+    background-color: #efefef;
+    border: 1px solid #222;
+    border-radius: 2px;
+    transition: background-color 0.15s ease;
+}
+
+.deploy-form label input[type=submit]:hover{
+    background-color: #dfdfdf;
+}
+
+.deploy-form label > .input-field{
+    width: 70%;
+    font-size: 14px;
+    font-family: 'EB Garamond', serif;
+    background-color: #efefef;
+    border: 1px solid #222;
+    border-radius: 2px;
+    transition: background-color 0.15s ease;
+}
+
+.deploy-form label > textarea{
+    resize: none;
+}
+
+.deployment-table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 14px;
+    font-family: 'EB Garamond', serif;
+}
+
+.deployment-table th, td {
+    text-align: left;
+    padding: 8px;
+    border: 1px solid #ddd;
+}
+
+.deployment-table th {
+    text-align: center;
+}
+  
+.deployment-table tr:nth-child(even){
+    background-color: #fff;
+}
+
+.deployment-table th {
+    background-color: #333;
+    color: white;
+}
+
+.deployment {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.deployment button {
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 16px;
+    font-family: 'EB Garamond', serif;
+    background-color: rgba(0,0,0,0.1);;
+    border: 1px solid #222;
+    border-radius: 2px;
+    transition: background-color 0.15s ease;
+}
+
+.deployment button:hover {
+    cursor: pointer;
+    background-color: rgba(0,0,0,0.2);;
+}
+
+
+.deployment-table td div{
+    text-decoration: none;
+    color: #333;
+    padding-left: 5px;
+    transition: color 0.15s ease;
+    display: inline-block;
+    width: 1.5em;
+}
+
+.deployment-table td div:hover{
+    cursor: pointer;
+    color: #777;
+}
+
+.deploy-form-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.react-confirm-alert-button-group > button {
+    font-family: 'EB Garamond', serif;
+    background: #333;
+    padding: 4px 15px;
+    color: #eee;
+    margin-right: 15px;
+    border-radius: 2px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+}
+
+.react-confirm-alert-button-group > button:hover {
+    background: #555;
+}
+
+.react-confirm-alert-body {
+    font-family: 'EB Garamond', serif;
+    width: 400px;
+    padding: 30px;
+    border-radius: 2px;
+    color: black;
+}
+
+.react-confirm-alert-body > h1 {
+    font-size: 24px;
+}
+
+.react-confirm-alert-overlay {
+    top: -200px;
+    background: rgba(0, 0, 0, 0.2);
+    -webkit-animation: react-confirm-alert-fadeIn 0.05s 0.05s forwards;
+    -moz-animation: react-confirm-alert-fadeIn 0.05s 0.05s forwards;
+    -o-animation: react-confirm-alert-fadeIn 0.05s 0.05s forwards;
+    animation: react-confirm-alert-fadeIn 0.05s 0.05s forwards;
+  }
+  
