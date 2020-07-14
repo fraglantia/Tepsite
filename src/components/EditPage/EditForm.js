@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import Project from '../Common/Project'
 import placeholder_img from '../../Datas/Images/placeholder.jpg'
+import baseAPI from '../../Datas/apiurl'
 
 class EditForm extends React.Component {
     constructor(props) {
@@ -44,7 +45,7 @@ class EditForm extends React.Component {
     componentDidMount () {
       axios({
         method: 'GET',
-        url: '/api/adminProjects/' + this.props.id,
+        url: baseAPI + '/api/adminProjects/' + this.props.id,
         withCredentials: true
       })
       .then((response) => {
@@ -52,7 +53,7 @@ class EditForm extends React.Component {
           projectName: response.data["Name"],
           projectDesc: response.data["Desc"],
           projectPort: response.data["Port"],
-          previewImg: "/api/" + response.data["Img"],
+          previewImg: baseAPI + "/api/" + response.data["Img"],
           errorMsg: '',
         })
       })

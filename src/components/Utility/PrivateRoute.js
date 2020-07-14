@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { Route, Redirect } from 'react-router-dom';
+import baseAPI from '../../Datas/apiurl'
 
 class PrivateRoute extends React.Component {
     constructor() {
@@ -14,7 +15,7 @@ class PrivateRoute extends React.Component {
     componentDidMount() {
         axios({
             method: 'GET',
-            url: '/api/checkAuth',
+            url: baseAPI + '/api/checkAuth',
             withCredentials: true
           })
           .then((response) => {

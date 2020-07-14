@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import Project from '../Common/Project'
 import placeholder_img from '../../Datas/Images/placeholder.jpg'
+import baseAPI from '../../Datas/apiurl'
 
 class DeployForm extends React.Component {
     constructor(props) {
@@ -51,7 +52,7 @@ class DeployForm extends React.Component {
       
       axios({
         method: 'POST',
-        url: '/api/deploy',
+        url: baseAPI + '/api/deploy',
         data: data,
         headers: {
           'content-type': 'multipart/form-data'

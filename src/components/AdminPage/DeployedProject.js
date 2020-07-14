@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt, faEdit, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
+import baseAPI from '../../Datas/apiurl'
 
 class DeployedProject extends React.Component {
   
@@ -48,7 +49,7 @@ class DeployedProject extends React.Component {
   handleVisibility(event){
     axios({
       method: 'GET',
-      url: '/api/toggleVisible/' + this.props.detail.id,
+      url: baseAPI + '/api/toggleVisible/' + this.props.detail.id,
       withCredentials: true
     })
     .then((response) => {
@@ -61,7 +62,7 @@ class DeployedProject extends React.Component {
   handleConfirmedDelete() {
     axios({
       method: 'POST',
-      url: '/api/deleteProject/' + this.props.detail.id,
+      url: baseAPI + '/api/deleteProject/' + this.props.detail.id,
       withCredentials: true
     })
     .then((response) => {

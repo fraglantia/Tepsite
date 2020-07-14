@@ -1,3 +1,3 @@
-const apiurl = 'https://stevebezalel.com/api/projects'
+const baseAPI = 'stevebezalel.com:8000/'
 
-export default apiurl
+export default baseAPI

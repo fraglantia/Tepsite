@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import DeployedProject from './DeployedProject'
+import baseAPI from '../../Datas/apiurl'
 
 class Body extends React.Component {
 
@@ -17,7 +18,7 @@ class Body extends React.Component {
     }
 
     componentDidMount() {
-        const apiurl = "/api/adminProjects"
+        const apiurl = baseAPI + "/api/adminProjects"
         axios.get(apiurl)
             .then(response => {
                 const projects = []
