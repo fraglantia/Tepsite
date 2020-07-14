@@ -6,7 +6,7 @@ class Body extends React.Component {
     render() {
         return(
             <div>
-                <EditForm id={this.props.id} />
+                <EditForm redirectAction={this.props.redirectAction} id={this.props.id} />
             </div>
         )
     }

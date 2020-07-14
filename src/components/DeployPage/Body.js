@@ -6,7 +6,7 @@ class Body extends React.Component {
     render() {
         return(
             <div>
-                <DeployForm />
+                <DeployForm redirectAction={this.props.redirectAction}/>
             </div>
         )
     }

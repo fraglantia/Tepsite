@@ -1,5 +1,7 @@
-import React from 'react';
+import React from 'react'
 import axios from 'axios'
+import Project from '../Common/Project'
+import placeholder_img from '../../Datas/Images/placeholder.jpg'
 
 class DeployForm extends React.Component {
     constructor(props) {
@@ -8,14 +10,15 @@ class DeployForm extends React.Component {
         projectName: '',
         projectDesc: '',
         projectPort: '',
-        projectFile: null,
+        projectImg: null,
+        previewImg: placeholder_img,
         errorMsg: ''
       };
   
       this.handleProjNameChange = this.handleProjNameChange.bind(this);
       this.handleProjDescChange = this.handleProjDescChange.bind(this);
       this.handleProjPortChange = this.handleProjPortChange.bind(this);
-      this.handleProjFileChange = this.handleProjFileChange.bind(this);
+      this.handleProjImgChange = this.handleProjImgChange.bind(this)
       this.handleSubmit = this.handleSubmit.bind(this);
     }
   
@@ -31,28 +34,35 @@ class DeployForm extends React.Component {
       this.setState({projectPort: event.target.value});
     }
 
-    handleProjFileChange(event) {
-      this.setState({projectFile: event.target.files[0]})
+    handleProjImgChange(event) {
+      this.setState({
+        projectImg: event.target.files[0],
+        previewImg: URL.createObjectURL(event.target.files[0])
+      })
     }
   
     handleSubmit(event) {
       event.preventDefault();
       const data = new FormData() 
-      data.append('projectFile', this.state.projectFile)
+      data.append('projectImg', this.state.projectImg)
       data.append('projectName', this.state.projectName)
       data.append('projectDesc', this.state.projectDesc)
       data.append('projectPort', this.state.projectPort)
       
       axios({
         method: 'POST',
-        url: '/api/addproject',
+        url: '/api/deploy',
         data: data,
+        headers: {
+          'content-type': 'multipart/form-data'
+        },
         withCredentials: true
       })
       .then((response) => {
         this.setState({
           errorMsg: '',
         })
+        this.props.redirectAction()
       })
       .catch((error) => {
         if(error.response.status === 401){
@@ -65,7 +75,7 @@ class DeployForm extends React.Component {
   
     render() {
       return (
-        <div>
+        <div className="deploy-form-container">
             <form onSubmit={this.handleSubmit} className="deploy-form">
                 <label>
                   <span>Name:</span>
@@ -83,10 +93,10 @@ class DeployForm extends React.Component {
                 </label>
 
                 <label>
-                  <span>File:</span>
+                  <span>Thumbnail:</span>
                   <div className="upload-btn-wrapper">
                     <button className="btn">Upload a file</button>
-                    <input type="file" className="input-field-file" name="projectFile" onChange={this.handleProjFileChange} />
+                    <input type="file" accept="image/*" className="input-field-file" name="projectImg" onChange={this.handleProjImgChange} />
                   </div>
                 </label>
 
@@ -96,6 +106,14 @@ class DeployForm extends React.Component {
               {this.state.errorMsg !== '' && 
                 <div className="error-message">{this.state.errorMsg}</div>
               }
+            </div>
+            <div>
+              <Project 
+                link="#"
+                img={this.state.previewImg}
+                title={this.state.projectName!=="" ? this.state.projectName : "Project Title"}
+                desc={this.state.projectDesc!=="" ? this.state.projectDesc : "Project Description"}
+              />
             </div>
         </div>
       );

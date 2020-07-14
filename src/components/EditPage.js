@@ -2,24 +2,28 @@ import React from 'react';
 import Header from './Common/Header';
 import Footer from './Common/Footer';
 import Body from './EditPage/Body';
+import { useHistory, useLocation } from 'react-router-dom';
 
-class DeployPage extends React.Component {
+function DeployPage(props) {
+  const { match: { params } } = props;
+  const id = parseInt(params.id)
+
+  let history = useHistory();
+  let location = useLocation();
   
-  constructor(props) {
-    super(props);
-    const { match: { params } } = this.props;
-    this.state = {id:parseInt(params.id)}
-  }
+  let { from } = location.state || { from: { pathname: "/" } };
+  let redirectAuth = () => {
+      history.replace(from);
+  };
 
-  render() {
-      return(
-        <div className='App'>
-            <Header desc="Add a Project"/>
-            <Body id={this.state.id}/>
-            <Footer />
-      </div>
-      )
-  }
+  return(
+      <div className='App'>
+          <Header desc="Edit a Project"/>
+          <Body redirectAction={redirectAuth} id={id}/>
+          <Footer />
+    </div>
+  )
 }
+
 
 export default DeployPage;

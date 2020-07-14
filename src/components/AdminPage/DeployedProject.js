@@ -1,16 +1,22 @@
 import React from 'react';
+import axios from 'axios'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrashAlt, faEdit, faDownload } from '@fortawesome/free-solid-svg-icons'
+import { faTrashAlt, faEdit, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 
 class DeployedProject extends React.Component {
   
-  constructor() {
-      super()
-      this.handleDownload = this.handleDownload.bind(this)
+  constructor(props) {
+      super(props)
+
+      this.state = {
+        visible: this.props.detail.visible
+      }
+      
       this.handleDelete = this.handleDelete.bind(this)
       this.handleConfirmedDelete = this.handleConfirmedDelete.bind(this)
+      this.handleVisibility = this.handleVisibility.bind(this)
   }
 
   padDesc(desc){
@@ -22,17 +28,11 @@ class DeployedProject extends React.Component {
       }
   }
 
-  handleDownload(event){
-    event.preventDefault();
-    // alert('downloaded '+this.props.id)
-  }
-
   handleDelete(event){
     event.preventDefault();
-    // alert('deleted '+this.props.id)
     confirmAlert({
-      title: 'Confirm to Delete',
-      message: `Are you sure you want to delete ${this.props.name}?`,
+      title: 'Confirm Deletion',
+      message: `Are you sure you want to delete ${this.props.detail.name}?`,
       buttons: [
         {
           label: 'Yes',
@@ -45,28 +45,48 @@ class DeployedProject extends React.Component {
     });
   }
 
+  handleVisibility(event){
+    axios({
+      method: 'GET',
+      url: '/api/toggleVisible/' + this.props.detail.id,
+      withCredentials: true
+    })
+    .then((response) => {
+      this.setState({
+        visible: !this.state.visible
+      })
+    })
+  }
+
   handleConfirmedDelete() {
-    alert(`deleting id=${this.props.id}`)
+    axios({
+      method: 'POST',
+      url: '/api/deleteProject/' + this.props.detail.id,
+      withCredentials: true
+    })
+    .then((response) => {
+      this.props.redirectAction()
+    })
   }
 
   render() {
       return(
         <tr>
-          <td>{this.props.port}</td>
-          <td>{this.props.name}</td>
-          <td>{this.padDesc(this.props.desc)}</td>
+          <td>{this.props.detail.port}</td>
+          <td>{this.props.detail.name}</td>
+          <td>{this.padDesc(this.props.detail.desc)}</td>
           <td>
-            <a href={"/edit/"+this.props.id}>
-              <span>
+            <a href={"/edit/"+this.props.detail.id}>
+              <div>
                 <FontAwesomeIcon icon={faEdit} size="lg"/>
-              </span>
+              </div>
             </a>
-            <span onClick={this.handleDownload}>
-              <FontAwesomeIcon icon={faDownload} size="lg"/>
-            </span>
-            <span  onClick={this.handleDelete}>
+            <div  onClick={this.handleDelete}>
               <FontAwesomeIcon icon={faTrashAlt} size="lg"/>
-            </span>
+            </div>
+            <div  onClick={this.handleVisibility}>
+              <FontAwesomeIcon icon={this.state.visible ? faEye : faEyeSlash} size="lg"/>
+            </div>
           </td>
         </tr>
       )

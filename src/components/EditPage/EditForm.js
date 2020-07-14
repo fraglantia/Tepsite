@@ -1,5 +1,7 @@
-import React from 'react';
+import React from 'react'
 import axios from 'axios'
+import Project from '../Common/Project'
+import placeholder_img from '../../Datas/Images/placeholder.jpg'
 
 class EditForm extends React.Component {
     constructor(props) {
@@ -8,12 +10,15 @@ class EditForm extends React.Component {
         projectName: '',
         projectDesc: '',
         projectPort: '',
+        projectImg: null,
+        previewImg: placeholder_img,
         errorMsg: ''
       };
   
       this.handleProjNameChange = this.handleProjNameChange.bind(this);
       this.handleProjDescChange = this.handleProjDescChange.bind(this);
       this.handleProjPortChange = this.handleProjPortChange.bind(this);
+      this.handleProjImgChange = this.handleProjImgChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
     }
   
@@ -29,29 +34,35 @@ class EditForm extends React.Component {
       this.setState({projectPort: event.target.value});
     }
 
+    handleProjImgChange(event) {
+      this.setState({
+        projectImg: event.target.files[0],
+        previewImg: URL.createObjectURL(event.target.files[0]),
+      })
+    }
+
     componentDidMount () {
-      // console.log(this.props.id)
-      if(this.props.id===0){
+      axios({
+        method: 'GET',
+        url: '/api/adminProjects/' + this.props.id,
+        withCredentials: true
+      })
+      .then((response) => {
         this.setState({
-          projectName: 'Project Name 0',
-          projectDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-          projectPort: 10000,
+          projectName: response.data["Name"],
+          projectDesc: response.data["Desc"],
+          projectPort: response.data["Port"],
+          previewImg: "/api/" + response.data["Img"],
+          errorMsg: '',
         })
-      }
-      else if(this.props.id===1){
-        this.setState({
-          projectName: 'Project Name 1',
-          projectDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-          projectPort: 10001,
-        })
-      }
-      else {
-        this.setState({
-          projectName: 'Project Name X',
-          projectDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-          projectPort: 10009,
-        })
-      }
+      })
+      .catch((error) => {
+        if(error.response.status === 401){
+          this.setState({errorMsg: error.response.data})
+        } else {
+          this.setState({errorMsg: "Internal Server Error"})
+        }
+      });
     }
 
 
@@ -61,10 +72,11 @@ class EditForm extends React.Component {
       data.append('projectName', this.state.projectName)
       data.append('projectDesc', this.state.projectDesc)
       data.append('projectPort', this.state.projectPort)
+      data.append('projectImg', this.state.projectImg)
       
       axios({
         method: 'POST',
-        url: '/api/editproject/' + this.props.id,
+        url: '/api/editProject/' + this.props.id,
         data: data,
         withCredentials: true
       })
@@ -72,6 +84,7 @@ class EditForm extends React.Component {
         this.setState({
           errorMsg: '',
         })
+        this.props.redirectAction()
       })
       .catch((error) => {
         if(error.response.status === 401){
@@ -84,7 +97,7 @@ class EditForm extends React.Component {
   
     render() {
       return (
-        <div>
+        <div className="deploy-form-container">
             <form onSubmit={this.handleSubmit} className="deploy-form">
                 <label>
                   <span>Name:</span>
@@ -101,12 +114,28 @@ class EditForm extends React.Component {
                   <input type="number" className="input-field" name="projectPort" value={this.state.projectPort} onChange={this.handleProjPortChange} />
                 </label>
 
+                <label>
+                  <span>Thumbnail:</span>
+                  <div className="upload-btn-wrapper">
+                    <button className="btn">Upload a file</button>
+                    <input type="file" className="input-field-file" name="projectImg" onChange={this.handleProjImgChange} />
+                  </div>
+                </label>
+
                 <label><span> </span><input type="submit" value="Save Changes" /></label>
             </form>
             <div className="error-container">
               {this.state.errorMsg !== '' && 
                 <div className="error-message">{this.state.errorMsg}</div>
               }
+            </div>
+            <div>
+              <Project 
+                link="#"
+                img={this.state.previewImg}
+                title={this.state.projectName!=="" ? this.state.projectName : "Project Title"}
+                desc={this.state.projectDesc!=="" ? this.state.projectDesc : "Project Description"}
+              />
             </div>
         </div>
       );

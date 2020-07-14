@@ -1,4 +1,5 @@
-import React from 'react';
+import React from 'react'
+import axios from 'axios'
 import DeployedProject from './DeployedProject'
 
 class Body extends React.Component {
@@ -12,46 +13,39 @@ class Body extends React.Component {
         }
 
         this.handleClick = this.handleClick.bind(this)
+        this.redirectAction = this.redirectAction.bind(this)
     }
 
     componentDidMount() {
-        // axios.get(apiurl)
-        //     .then(response => {
-        //         this.setState(
-        //             {
-        //                 loading: false,
-        //                 projects: response.data
-        //             })
-        //     })
-
-        const placeholder_projects = []
-
-        const placeholder_item_0 = {
-            id: 0,
-            name: 'Project Name 0',
-            desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-            port: 10000,
-        }
-
-        const placeholder_item_1 = {
-            id: 1,
-            name: 'Project Name 1',
-            desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-            port: 10001,
-        }
-
-        placeholder_projects.push(placeholder_item_0)
-        placeholder_projects.push(placeholder_item_1)
-
-        this.setState ({
-            loading: false,
-            projects: placeholder_projects,
-        })
-        
+        const apiurl = "/api/adminProjects"
+        axios.get(apiurl)
+            .then(response => {
+                const projects = []
+                if(response.data){
+                    for (const el of response.data) {
+                        projects.push({
+                            id: el["ID"],
+                            name: el["Name"],
+                            desc: el["Desc"],
+                            port: el["Port"],
+                            visible: el["Visibility"],
+                        })
+                    }
+                }
+                this.setState(
+                    {
+                        loading: false,
+                        projects: projects
+                    })
+            })        
       }
 
     handleClick(){
         this.props.history.push('/deploy')
+    }
+
+    redirectAction(){
+        this.props.history.push('/')
     }
 
     render() {
@@ -70,12 +64,12 @@ class Body extends React.Component {
                     <tbody>
                     {
                         this.state.projects.map(
-                                (project, idx) => <DeployedProject name={project.name} port={project.port} desc={project.desc} key={idx} id={project.id} /> 
+                                (project, idx) => <DeployedProject detail={project} key={idx} redirectAction={this.redirectAction} /> 
                             )
                     }
                     </tbody>
                 </table>
-                <button onClick={this.handleClick}>Deploy a  New Project >></button>
+                <button onClick={this.handleClick}>{"Deploy a  New Project >>"}</button>
             </div>
         )
     }
