@@ -1,5 +1,2 @@
-const baseAPI = "BASE_API"
-const baseDomain = "BASE_DOMAIN"
-
-export default baseDomain
-export default baseAPI
+export const baseAPI = "BASE_API"
+export const baseDomain = "BASE_DOMAIN"
