@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import qs from 'qs';
-import baseAPI from '../../Datas/apiurl'
+import { baseAPI } from '../../Datas/apiurl'
 
 class LoginForm extends React.Component {
     constructor(props) {

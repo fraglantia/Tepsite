@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { Route, Redirect } from 'react-router-dom';
-import baseAPI from '../../Datas/apiurl'
+import { baseAPI } from '../../Datas/apiurl'
 
 class PrivateRoute extends React.Component {
     constructor() {

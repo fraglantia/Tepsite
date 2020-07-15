@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import Project from '../Common/Project'
 import placeholder_img from '../../Datas/Images/placeholder.jpg'
-import baseAPI from '../../Datas/apiurl'
+import { baseAPI } from '../../Datas/apiurl'
 
 class EditForm extends React.Component {
     constructor(props) {

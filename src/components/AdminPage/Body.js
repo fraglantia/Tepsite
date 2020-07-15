@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import DeployedProject from './DeployedProject'
-import baseAPI from '../../Datas/apiurl'
+import { baseAPI } from '../../Datas/apiurl'
 
 class Body extends React.Component {
 
