@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios'
 import Project from '../Common/Project'
-import baseAPI from '../../Datas/apiurl'
+import { baseAPI, baseDomain } from '../../Datas/apiurl'
 
 class Body extends React.Component {
 
@@ -22,8 +22,8 @@ class Body extends React.Component {
                 if(response.data){
                     for (const el of response.data) {
                         projects.push({
-                            link: el["Port"],
-                            img: baseAPI + "/api/" + el["Img"],
+                            link: `${baseDomain}:${el["Port"]}`,
+                            img: `${baseAPI}/api/${el["Img"]}`,
                             title: el["Name"],
                             desc: el["Desc"],
                         })

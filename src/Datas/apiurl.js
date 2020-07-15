@@ -1,3 +1,5 @@
-const baseAPI = 'http://stevebezalel.com:8000'
+const baseAPI = "BASE_API"
+const baseDomain = "BASE_DOMAIN"
 
+export default baseDomain
 export default baseAPI
